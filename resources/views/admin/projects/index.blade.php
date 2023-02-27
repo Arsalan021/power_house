@@ -14,7 +14,7 @@
         <div class="col-12">
          <div class="card">
             <div class="card-header">
-             <a class="btn btn-success" href="{{ route('service.create') }}"> Create New</a>
+             <a class="btn btn-success" href="{{ route('project.create') }}"> Create New</a>
             
             </div>
             <!-- /.card-header -->
@@ -24,6 +24,8 @@
                 <tr>
                     <th>No</th>
                     <th>Title</th>
+                    <th>Capacity</th>
+                    <th>Location</th>
                     <th>Description</th>
                     <th>Image</th>
                     <th>Status</th>
@@ -31,13 +33,15 @@
                   </tr>
               </thead>
                 
-                @forelse ($services as $key => $item)
+                @forelse ($projects as $key => $item)
                  
                   <tr>
                     <td>{{ $key+1 }}</td>
                     <td>{{ $item->title }}</td>
+                    <td>{{ $item->capacity }}</td>
+                    <td>{{ $item->location }}</td>
                     <td>{{ $item->description }}</td>
-                    <td><img class="profile-user-img img-fluid" src='{{asset("documents/service/$item->image")}}' width="50px" alt="Image"></td>
+                    <td><img class="profile-user-img img-fluid" src='{{asset("documents/project/$item->image")}}' width="50px" alt="Image"></td>
                     <td>
                       <div class="form-group">
                         <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
@@ -48,10 +52,10 @@
                     </td> 
                     
                     <td>
-                      <a class="btn btn-info" href="{{ route('service.show',$item->id) }}"><span class="action-edit"><i class="feather icon-eye"></i></span></a>
-                       <a class="btn btn-primary" href="{{ route('service.edit',$item->id) }}"><span class="action-edit"><i class="feather icon-edit"></i></span></a>
+                      <a class="btn btn-info" href="{{ route('project.show',$item->id) }}"><span class="action-edit"><i class="feather icon-eye"></i></span></a>
+                       <a class="btn btn-primary" href="{{ route('project.edit',$item->id) }}"><span class="action-edit"><i class="feather icon-edit"></i></span></a>
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <form method="post" action="{{route('service.destroy',$item->id)}}" style="margin-top: -38px;margin-left: 150px";>
+                      <form method="post" action="{{route('project.destroy',$item->id)}}" style="margin-top: -38px;margin-left: 150px";>
                          @csrf
                          @method('delete')
                           <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure Want To Delete This..??')" class="btn btn-default generalsetting_admin"><span class="action-delete"><i class="feather icon-trash"></i></span></button>

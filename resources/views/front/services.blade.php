@@ -26,105 +26,21 @@
             <h2>What we Do</h2>
         </div>
         <div class="row">
-            <div data-aos="fade-up" data-aos-delay="300" class="col-md-4">
-                <div class="service-card main">
-                    <img src="assets/img/ser1.png" alt="" class="img-fluid">
-                    <h3>Manufacturing</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit sed deiusmod tempor incidi dunt ut
-                        labore.
-                    </p>
-                    <a href="#" class="rm-link">Read More</a>
+           @if(count($services)>0)
+                @foreach($services as $item)
+                <div data-aos="fade-up" data-aos-delay="300" class="col-md-4">
+                    <div class="service-card main">
+                        <img src='{{asset("documents/service/$item->image??null")}}' alt="" class="img-fluid">
+                        <h3>{{$item->title??null}}</h3>
+                        <p>
+                        {{$item->description??null}}.
+                        </p>
+                        <a href="#" class="rm-link">Read More</a>
+                    </div>
                 </div>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="500" class="col-md-4">
-                <div class="service-card main">
-                    <img src="assets/img/ser2.png" alt="" class="img-fluid">
-                    <h3>Manufacturing</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit sed deiusmod tempor incidi dunt ut
-                        labore.
-                    </p>
-                    <a href="#" class="rm-link">Read More</a>
-                </div>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="700" class="col-md-4">
-                <div class="service-card main">
-                    <img src="assets/img/ser3.png" alt="" class="img-fluid">
-                    <h3>Manufacturing</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit sed deiusmod tempor incidi dunt ut
-                        labore.
-                    </p>
-                    <a href="#" class="rm-link">Read More</a>
-                </div>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="300" class="col-md-4">
-                <div class="service-card main">
-                    <img src="assets/img/ser1.png" alt="" class="img-fluid">
-                    <h3>Manufacturing</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit sed deiusmod tempor incidi dunt ut
-                        labore.
-                    </p>
-                    <a href="#" class="rm-link">Read More</a>
-                </div>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="500" class="col-md-4">
-                <div class="service-card main">
-                    <img src="assets/img/ser2.png" alt="" class="img-fluid">
-                    <h3>Manufacturing</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit sed deiusmod tempor incidi dunt ut
-                        labore.
-                    </p>
-                    <a href="#" class="rm-link">Read More</a>
-                </div>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="700" class="col-md-4">
-                <div class="service-card main">
-                    <img src="assets/img/ser3.png" alt="" class="img-fluid">
-                    <h3>Manufacturing</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit sed deiusmod tempor incidi dunt ut
-                        labore.
-                    </p>
-                    <a href="#" class="rm-link">Read More</a>
-                </div>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="300" class="col-md-4">
-                <div class="service-card main">
-                    <img src="assets/img/ser1.png" alt="" class="img-fluid">
-                    <h3>Manufacturing</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit sed deiusmod tempor incidi dunt ut
-                        labore.
-                    </p>
-                    <a href="#" class="rm-link">Read More</a>
-                </div>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="500" class="col-md-4">
-                <div class="service-card main">
-                    <img src="assets/img/ser2.png" alt="" class="img-fluid">
-                    <h3>Manufacturing</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit sed deiusmod tempor incidi dunt ut
-                        labore.
-                    </p>
-                    <a href="#" class="rm-link">Read More</a>
-                </div>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="700" class="col-md-4">
-                <div class="service-card main">
-                    <img src="assets/img/ser3.png" alt="" class="img-fluid">
-                    <h3>Manufacturing</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit sed deiusmod tempor incidi dunt ut
-                        labore.
-                    </p>
-                    <a href="#" class="rm-link">Read More</a>
-                </div>
-            </div>
+            @endforeach
+            @endif
+            
         </div>
     </div>
 </section>

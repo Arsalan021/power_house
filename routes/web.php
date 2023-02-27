@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\ProjectController;
+
 
 
 
@@ -63,7 +65,10 @@ Route::middleware(['auth','can:isAdmin'])->prefix('admin')->group(function()
 {
     Route::resource('users', UserController::class);
     Route::resource('service', ServiceController::class);
-    
+    Route::resource('project', ProjectController::class);
+
+    Route::get('change-status-service',[ServiceController::class,'changeStatusService'])->name('change-status-service');
+
     Route::controller(AdminController::class)->group(function () 
     {   
         Route::get('dashboard', 'dashboard')->name('dashboard');

@@ -14,7 +14,7 @@
                                 
                 <div class="card-content">
                     <div class="card-body">
-                  {!! Form::model($service, ['method' => 'PATCH','route' => ['service.update', $service->id],'enctype'=>'multipart/form-data']) !!}
+                  {!! Form::model($projects, ['method' => 'PATCH','route' => ['project.update', $projects->id],'enctype'=>'multipart/form-data']) !!}
                   <div class="row">
                       <div class="col-xs-12 col-sm-12 col-md-12">
                           <div class="form-group">
@@ -25,7 +25,23 @@
 
                       <div class="col-xs-12 col-sm-12 col-md-12">
                           <div class="form-group">
-                              <strong>Last Name:</strong>
+                              <strong>Capacity:</strong>
+                              {!! Form::text('capacity', null, array('placeholder' => 'Capacity','class' => 'form-control')) !!}
+                          </div>
+                      </div>
+
+
+                      <div class="col-xs-12 col-sm-12 col-md-12">
+                          <div class="form-group">
+                              <strong>Location:</strong>
+                              {!! Form::text('location', null, array('placeholder' => 'Location','class' => 'form-control')) !!}
+                          </div>
+                      </div>
+
+
+                      <div class="col-xs-12 col-sm-12 col-md-12">
+                          <div class="form-group">
+                              <strong>Description:</strong>
                               {!! Form::textarea('description', null, array('placeholder' => 'Description','class' => 'form-control')) !!}
                           </div>
                       </div>
@@ -33,7 +49,7 @@
                      
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                            <img class="profile-user-img img-fluid" src='{{asset("documents/service/$service->image??null")}}' width="200px" alt="Image">
+                            <img class="profile-user-img img-fluid" src='{{asset("documents/project/$projects->image??null")}}' width="200px" alt="Image">
                             </div>
                         </div>
                         

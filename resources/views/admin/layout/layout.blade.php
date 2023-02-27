@@ -135,7 +135,16 @@
 
                         <li class="@if(Route::currentRouteName() == 'service.create' ) active  @endif" ><a href="{{route('service.create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Service Create</span></a>
                         </li>
+                    </ul>
+                </li>
 
+                <li class=" nav-item"><a href="#"><i class="feather icon-layers"></i><span class="menu-title" data-i18n="Service">Project Management</span></a>
+                    <ul class="menu-content">
+                        <li class="@if(Route::currentRouteName() == 'project.index' ) active  @endif" ><a href="{{route('project.index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Project List</span></a>
+                        </li>
+
+                        <li class="@if(Route::currentRouteName() == 'project.create' ) active  @endif" ><a href="{{route('project.create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Project Create</span></a>
+                        </li>
                     </ul>
                 </li>
                

@@ -17,21 +17,36 @@
                   <div class="col-xs-12 col-sm-12 col-md-12">
                       <div class="form-group">
                           <strong>Title:</strong>
-                          {{ $services->title??null }}
+                          {{ $projects->title??null }}
+                      </div>
+                  </div>
+
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                      <div class="form-group">
+                          <strong>Capacity:</strong>
+                          {{ $projects->capacity??null }}
+                      </div>
+                  </div>
+
+
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                      <div class="form-group">
+                          <strong>Location:</strong>
+                          {{ $projects->location??null }}
                       </div>
                   </div>
 
                   <div class="col-xs-12 col-sm-12 col-md-12">
                       <div class="form-group">
                           <strong>Description:</strong>
-                          {{ $services->description??null }}
+                          {{ $projects->description??null }}
                       </div>
                   </div>
 
                   <div class="col-xs-12 col-sm-12 col-md-12">
                       <div class="form-group">
                           <strong>Image:</strong>
-                          <img class="profile-user-img img-fluid" src='{{asset("documents/service/$services->image??null")}}' width="150px" alt="Image">
+                          <img class="profile-user-img img-fluid" src='{{asset("documents/project/$projects->image??null")}}' width="150px" alt="Image">
                       </div>
                   </div>
               </div>

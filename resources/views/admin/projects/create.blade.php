@@ -15,7 +15,7 @@
             
         <div class="card-content">
             <div class="card-body">
-                <form class="form-horizontal" action="{{route('project.store')}}" novalidate enctype= "multipart/form-data" method="POST">
+                <form class="form-horizontal" action="{{route('service.store')}}" novalidate enctype= "multipart/form-data" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
@@ -25,21 +25,6 @@
                                     <input type="text" name="title" class="form-control"  data-validation-required-message="This field is required" placeholder="Title" required>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label>Capacity</label>
-                                <div class="controls">
-                                    <input type="text" name="capacity" class="form-control"  data-validation-required-message="This field is required" placeholder="Capacity" required>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Location</label>
-                                <div class="controls">
-                                    <input type="text" name="location" class="form-control"  data-validation-required-message="This field is required" placeholder="Location" required>
-                                </div>
-                            </div>
-
                             <div class="form-group">
                                 <p >
                                     <img src="" id="output" alt="">

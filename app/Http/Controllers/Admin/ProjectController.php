@@ -4,17 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Service;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Project;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Hash;
-use DB;
-use DataTables;
-use Mail;
-use Carbon\Carbon;
-use Session;
-class ServiceController extends Controller
+
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,8 +17,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-         $services = Service::get();
-        return view('admin/services/index',compact('services'));
+        $projects = Project::get();
+        return view('admin.projects.index',compact('projects'));
     }
 
     /**
@@ -34,7 +28,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('admin/services/create');
+        return view('admin.services.create');
     }
 
     /**
@@ -45,7 +39,6 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        // return $input = $request->except(['_token', 'image'],$request->all());
         $this->validate($request, [
             'title' => 'required',
             // 'image' => 'required',
@@ -62,7 +55,7 @@ class ServiceController extends Controller
             $input['image'] = $img;
             $request->image->move(public_path("documents/service/"), $img);
         }
-        $user = Service::create($input);
+         $user = Project::create($input);
     
         return redirect()->back()->with(['message'=>'Serives addedd successfully','type'=>'success']);
     }
@@ -75,8 +68,8 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        $services = Service::find($id);
-         return view('admin.services.show',compact('services'));
+        $projects = Project::find($id);
+        return view('admin.projects.show',compact('projects'));
     }
 
     /**
@@ -87,8 +80,8 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $service = Service::find($id);
-        return view('admin.services.edit',compact('service'));
+        $projects = Project::find($id);
+        return view('admin.projects.edit',compact('projects'));
     }
 
     /**
@@ -100,17 +93,16 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
         $input = $request->all();
        
         if($request->hasFile('image'))
         {
             $img = Str::random(20).$request->file('image')->getClientOriginalName();
             $input['image'] = $img;
-            $request->image->move(public_path("documents/service/"), $img);
+            $request->image->move(public_path("documents/project/"), $img);
         }
 
-        $user = Service::find($id);
+        $user = Project::find($id);
         $user->update($input);
         return redirect()->back()
                 ->with(['message'=>'User update successfully','type'=>'success']);
@@ -124,20 +116,8 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        Service::find($id)->delete();
-        return redirect()->route('service.index')
+        Project::find($id)->delete();
+        return redirect()->route('project.index')
                         ->with(['message'=>'Service delete successfully','type'=>'success']);
-    }
-
-
-    public function changeStatusService(Request $request)
-    {
-        $statusChange = Service::where('id',$request->id)->update(['status'=>$request->status]);
-        if($statusChange)
-        {
-            return array('message'=>'Service status  has been changed successfully','type'=>'success');
-        }else{
-            return array('message'=>'Service status has not changed please try again','type'=>'error');
-        }
     }
 }

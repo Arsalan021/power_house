@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Service;
 use DB;
 use Hash;
 use DataTables;
@@ -20,7 +21,8 @@ class FrontController extends Controller
    
  public function index()
  {
-    return view('front/index');
+    $data['services'] = Service::take(3)->get();
+    return view('front/index',$data);
  }
 
  public function about()
@@ -30,7 +32,8 @@ class FrontController extends Controller
 
  public function services()
  {
-    return view('front/services');
+    $data['services'] = Service::get();
+    return view('front/services',$data);
  }
 
  public function projects()
