@@ -33,7 +33,7 @@
                                 <i class="far fa-phone fa-fw"></i>
                                 <div>
                                     <h5><b>Phone</b></h5>
-                                    +123-(4567)-890
+                                    {{$setting->phone_number??null}}
                                 </div>
                             </a>
                         </li>
@@ -42,7 +42,7 @@
                                 <i class="far fa-at fa-fw"></i>
                                 <div>
                                     <h5><b>Email</b></h5>
-                                    info@pwrhp.com
+                                    {{$setting->email??null}}
                                 </div>
                             </a>
                         </li>
@@ -51,7 +51,7 @@
                                 <i class="fal fa-map-marker-alt fa-fw"></i>
                                 <div>
                                     <h5><b>Location</b></h5>
-                                    ABCD Road, Melbourne VIC 3004,
+                                    {{$setting->email??null}}
                                 </div>
                             </a>
                         </li>
@@ -59,28 +59,29 @@
                 </div>
             </div>
             <div class="col-md-7">
-                <form action="#" class="contact-form main">
+                <form action="{{route('doContact')}}" method="POST" class="contact-form main">
+                    @csrf
                     <div class="section-intro text-center mb-5">
                         <h4>Our Testimonial</h4>
                         <h2>REQUEST A QUOTE</h2>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Name*" required>
+                            <input type="text" class="form-control" name="name" placeholder="Name*" required>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Phone*" required>
+                            <input type="text" class="form-control" name="phone" placeholder="Phone*" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Email*" required>
+                            <input type="text" class="form-control" name="email" placeholder="Email*" required>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Solar Installer*" required>
+                            <input type="text" class="form-control" name="social_installer" placeholder="Solar Installer*" required>
                         </div>
                     </div>
-                    <textarea rows="3" class="form-control tt" placeholder="Message*"></textarea>
+                    <textarea rows="3" class="form-control tt" name="message" placeholder="Message*"></textarea>
                     <input type="submit" class="theme-btn" value="Submit Now">
                 </form>
             </div>

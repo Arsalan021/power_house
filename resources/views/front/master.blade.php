@@ -22,6 +22,7 @@
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="{{asset('front-assets/css/style.css')}}" />
     <link rel="stylesheet" href="{{asset('front-assets/css/responsive.css')}}" />
+    <link rel="stylesheet" href="{{asset('app-assets/css/toastr.min.css')}}" />
 
 <title> @yield('title') | Power House</title>
 </head>
@@ -184,6 +185,29 @@
 
 <!-- SCRIPT: CUSTOM -->
 <script src="{{asset('front-assets/js/script.js')}}"></script>
+
+<script src="{{asset('app-assets/js/toastr.min.js')}}"></script>
+<script>
+       var type = "{{ Session::get('type') }}";
+      switch (type) {
+          case 'info':
+              toastr.info("{{ Session::get('message') }}");
+              break;
+
+          case 'warning':
+              toastr.warning("{{ Session::get('message') }}");
+              break;
+
+          case 'success':
+              toastr.success("{{ Session::get('message') }}");
+              break;
+
+          case 'error':
+              toastr.error("{{ Session::get('message') }}");
+              break;
+
+      }
+    </script>
 </body>
 
 </html>

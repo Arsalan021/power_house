@@ -18,6 +18,27 @@
                      <div class="row">
                         <input type="hidden" name="id" value="{{$setting->id??null}}">
                         <div class="col-md-12">
+
+                           <div class="form-group">
+                              <label>Company About</label>
+                              <div class="controls">
+                                 <input type="text" name="company_about_us" class="form-control" value="{{$setting->company_about_us??null}}" placeholder="Company About">
+                              </div>
+                           </div>
+
+
+                           <div class="form-group">
+                              <label>Company Description</label>
+                              <div class="controls">
+                                <fieldset class="form-group">
+                                    <textarea class="form-control" id="company_desc" name="company_desc" rows="3" placeholder="Company Description">{{$setting->company_desc??null}}</textarea>
+                                </fieldset>
+                                 </div>
+                           </div>
+                           
+                           
+
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -47,19 +68,25 @@
                             </div>
 
                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>Email</label>
+                                       <div class="controls">
+                                          <input type="email" name="email" class="form-control" value="{{$setting->email??null}}">
+                                       </div>
+                                    </div>
+                                 </div> 
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>Phone Number</label>
+                                       <div class="controls">
+                                          <input type="number" name="phone_number" class="form-control" placeholder="Phone Numner" value="{{$setting->phone_number??null}}">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>   
                            
-                           <div class="form-group">
-                              <label>Email</label>
-                              <div class="controls">
-                                 <input type="email" name="email" class="form-control" value="{{$setting->email??null}}">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label>Phone Number</label>
-                              <div class="controls">
-                                 <input type="number" name="phone_number" class="form-control" placeholder="Phone Numner" value="{{$setting->phone_number??null}}">
-                              </div>
-                           </div>
                            <div class="form-group">
                               <label>Address</label>
                               <div class="controls">
@@ -68,37 +95,45 @@
                                 </fieldset>
                                  </div>
                            </div>
+                           <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>Twitter Url</label>
+                                       <div class="controls">
+                                          <input type="url" name="twitter" class="form-control" placeholder="twitter Url" value="{{$setting->twitter??null}}">
+                                       </div>
+                                    </div>
+                               </div>
+                               <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Facebook Url</label>
+                                    <div class="controls">
+                                       <input type="url" name="facebook" class="form-control" placeholder="facebook Url" value="{{$setting->facebook??null}}">
+                                    </div>
+                                 </div>
+                               </div>
+                           </div>  
 
-                           <div class="form-group">
-                              <label>Twitter Url</label>
-                              <div class="controls">
-                                 <input type="url" name="twitter" class="form-control" placeholder="twitter Url" value="{{$setting->twitter??null}}">
-                              </div>
+                          
+                           <div class="row">
+                                <div class="col-md-6">
+                                 <div class="form-group">
+                                       <label>Youtube Url</label>
+                                       <div class="controls">
+                                          <input type="url" name="youtube" class="form-control" placeholder="youtube Url" value="{{$setting->youtube??null}}">
+                                       </div>
+                                    </div>
+                                </div>
+                              
+                                <div class="col-md-6">
+                                 <div class="form-group">
+                                       <label>Instagram Url</label>
+                                       <div class="controls">
+                                          <input type="url" name="instagram" class="form-control" placeholder="instagram Url" value="{{$setting->instagram??null}}">
+                                       </div>
+                                    </div>
+                                 </div> 
                            </div>
-
-                           <div class="form-group">
-                              <label>Facebook Url</label>
-                              <div class="controls">
-                                 <input type="url" name="facebook" class="form-control" placeholder="facebook Url" value="{{$setting->facebook??null}}">
-                              </div>
-                           </div>
-
-                           <div class="form-group">
-                              <label>Youtube Url</label>
-                              <div class="controls">
-                                 <input type="url" name="youtube" class="form-control" placeholder="youtube Url" value="{{$setting->youtube??null}}">
-                              </div>
-                           </div>
-
-
-                           <div class="form-group">
-                              <label>Instagram Url</label>
-                              <div class="controls">
-                                 <input type="url" name="instagram" class="form-control" placeholder="instagram Url" value="{{$setting->instagram??null}}">
-                              </div>
-                           </div>
-                           
-
                            <div class="form-group">
                               <label>Text</label>
                               <div class="controls">

@@ -10,33 +10,20 @@ use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $projects = Project::get();
         return view('admin.projects.index',compact('projects'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         return view('admin.services.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -53,44 +40,28 @@ class ProjectController extends Controller
         {
             $img = Str::random(20).$request->file('image')->getClientOriginalName();
             $input['image'] = $img;
-            $request->image->move(public_path("documents/service/"), $img);
+            $request->image->move(public_path("documents/project/"), $img);
         }
          $user = Project::create($input);
     
-        return redirect()->back()->with(['message'=>'Serives addedd successfully','type'=>'success']);
+        return redirect()->back()->with(['message'=>'Project addedd successfully','type'=>'success']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
         $projects = Project::find($id);
         return view('admin.projects.show',compact('projects'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($id)
     {
         $projects = Project::find($id);
         return view('admin.projects.edit',compact('projects'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
         $input = $request->all();
@@ -105,19 +76,31 @@ class ProjectController extends Controller
         $user = Project::find($id);
         $user->update($input);
         return redirect()->back()
-                ->with(['message'=>'User update successfully','type'=>'success']);
+                ->with(['message'=>'Project update successfully','type'=>'success']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
         Project::find($id)->delete();
         return redirect()->route('project.index')
-                        ->with(['message'=>'Service delete successfully','type'=>'success']);
+                        ->with(['message'=>'Project delete successfully','type'=>'success']);
+    }
+
+    public function changTypeProject(Request $request)
+    {
+        if($request->type == 'compeleted')
+        $type = 'pending';
+        if($request->type == 'pending')
+        $type = 'compeleted';
+
+        $statusChange = Project::where('id',$request->id)->update(['type'=>$type]);
+        if($statusChange)
+        {
+            return array('message'=>'Project status  has been changed successfully','type'=>'success');
+        }else{
+            return array('message'=>'Project status has not changed please try again','type'=>'error');
+        }
+
     }
 }

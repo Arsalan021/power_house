@@ -6,6 +6,10 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\AboutController;
+
+
 
 
 
@@ -40,11 +44,12 @@ Route::controller(FrontController::class)->group(function () {
     route::get('services','services')->name('services');
     route::get('projects','projects')->name('projects');
     route::get('contact-us','contactUs')->name('contact-us');
+    route::post('doContact','doContact')->name('doContact');
     
     
 });
 
-Route::controller(\App\Http\Controllers\Admin\AdminController::class)->group(function () {
+Route::controller(AdminController::class)->group(function () {
     
    route::get('admin/','user_login')->name('user-login')->middleware('guest');
    route::post('loginAdminProcess','loginAdminProcess')->name('loginAdminProcess');
@@ -66,8 +71,10 @@ Route::middleware(['auth','can:isAdmin'])->prefix('admin')->group(function()
     Route::resource('users', UserController::class);
     Route::resource('service', ServiceController::class);
     Route::resource('project', ProjectController::class);
+    Route::resource('testimonial', TestimonialController::class);
 
     Route::get('change-status-service',[ServiceController::class,'changeStatusService'])->name('change-status-service');
+    Route::get('change-type-project',[ProjectController::class,'changTypeProject'])->name('change-type-project');
 
     Route::controller(AdminController::class)->group(function () 
     {   
@@ -76,8 +83,16 @@ Route::middleware(['auth','can:isAdmin'])->prefix('admin')->group(function()
         Route::get('change-status', 'change_status')->name('change-status');
         Route::get('setting', 'setting')->name('setting');
         Route::post('addSetting', 'addSetting')->name('addSetting');
+        route::get('view-contact','viewContact')->name('view-contact');
+        route::get('contact-delete/{id}','contactCelete')->name('contact-delete');
         
     });
+
+    Route::controller(AboutController::class)->group(function () 
+    {   
+        Route::get('view-about', 'viewAbout')->name('view-about');
+        Route::post('addAbout','addAbout')->name('addAbout');
+     });
 
 });
 

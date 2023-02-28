@@ -29,13 +29,9 @@
             <div data-aos="fade-left" data-aos-delay="500" class="about-inner">
                 <div class="section-intro">
                     <h4>Company</h4>
-                    <h2>About Us</h2>
+                    <h2>{{$setting->about_us??null}}</h2>
                     <p>
-                        Powerhouse Is a local and global manufacturer of structural solutions for racking used in Solar
-                        PV powerplants and BESS Projects. We fabricate high quality beams or roll-formed profiles ,
-                        adding your unique punch patterns and galvanize them as needed all in house. Our strength comes
-                        from our ability to collaborate with our customers and deploy the right production strategy with
-                        our goal to provide a better product at a better price with better service.
+                       {{$setting->about_us_desc??null}}
                     </p>
                     <a href="about-us.php" class="theme-btn">Read More</a>
                 </div>
@@ -95,55 +91,28 @@
                         Completed Work</h2>
                 </div>
                 <div data-aos="fade-left" data-aos-delay="500" class="col-md-6 text-right">
-                    <a href="projects.php" class="theme-btn">View More</a>
+                    <a href="{{route('projects')}}" class="theme-btn">View More</a>
                 </div>
             </div>
         </div>
         <div data-aos="fade-down" data-aos-delay="700" class="projects-slider">
+            @if(count($projects)>0)
+            @foreach($projects as $item)
             <div class="inner-slide">
                 <div class="project-card">
-                    <img src="assets/img/work1.png" alt="" class="img-fluid">
+                    <img src='{{asset("documents/project/$item->image??null")}}' alt="" class="img-fluid">
                     <div class="project-card-content">
-                        <h3>Lincoln County, TN 150MW</h3>
-                        <h5><b>Capacity:</b> 120 MWS</h5>
-                        <h5><b>Location:</b> Pinetown, CA</h5>
+                        <h3>{{$item->title??null}}</h3>
+                        <h5><b>Capacity:</b> {{$item->capacity??null}}</h5>
+                        <h5><b>Location:</b> {{$item->location??null}}</h5>
                         <a href="#" class="rm-link">Read More</a>
                     </div>
                 </div>
             </div>
-            <div class="inner-slide">
-                <div class="project-card">
-                    <img src="assets/img/work2.png" alt="" class="img-fluid">
-                    <div class="project-card-content">
-                        <h3>Lincoln County, TN 150MW</h3>
-                        <h5><b>Capacity:</b> 120 MWS</h5>
-                        <h5><b>Location:</b> Pinetown, CA</h5>
-                        <a href="#" class="rm-link">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="inner-slide">
-                <div class="project-card">
-                    <img src="assets/img/work3.png" alt="" class="img-fluid">
-                    <div class="project-card-content">
-                        <h3>Lincoln County, TN 150MW</h3>
-                        <h5><b>Capacity:</b> 120 MWS</h5>
-                        <h5><b>Location:</b> Pinetown, CA</h5>
-                        <a href="#" class="rm-link">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="inner-slide">
-                <div class="project-card">
-                    <img src="assets/img/work4.png" alt="" class="img-fluid">
-                    <div class="project-card-content">
-                        <h3>Lincoln County, TN 150MW</h3>
-                        <h5><b>Capacity:</b> 120 MWS</h5>
-                        <h5><b>Location:</b> Pinetown, CA</h5>
-                        <a href="#" class="rm-link">Read More</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+            @endif
+
+           
         </div>
     </div>
 </section>

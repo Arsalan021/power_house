@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/extensions/shepherd-theme-default.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/validation/form-validation.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/forms/select/select2.min.css')}}">
 
     <!-- END: Vendor CSS-->
 
@@ -125,6 +126,10 @@
                     <ul class="menu-content">
                         <li class="@if(Route::currentRouteName() == 'setting' ) active  @endif" ><a href="{{route('setting')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Setting</span></a>
                         </li>
+
+                        <li class="@if(Route::currentRouteName() == 'view-about' ) active  @endif" ><a href="{{route('view-about')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">View About</span></a>
+                        </li>
+
                     </ul>
                 </li>
 
@@ -147,6 +152,25 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class=" nav-item"><a href="#"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Service">Testimonial Management</span></a>
+                    <ul class="menu-content">
+                        <li class="@if(Route::currentRouteName() == 'testimonial.index' ) active  @endif" ><a href="{{route('testimonial.index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Testimonial List</span></a>
+                        </li>
+
+                        <li class="@if(Route::currentRouteName() == 'testimonial.create' ) active  @endif" ><a href="{{route('testimonial.create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Testimonial Create</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class=" nav-item"><a href="#"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Service">Contact Management</span></a>
+                    <ul class="menu-content">
+                        <li class="@if(Route::currentRouteName() == 'view-contact' ) active  @endif" ><a href="{{route('view-contact')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Contact List</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                
                
               
             </ul>
@@ -214,6 +238,7 @@
     <script src="{{asset('app-assets/js/scripts/datatables/datatable.js')}}"></script>
     <script src="{{asset('app-assets/vendors/js/forms/validation/jqBootstrapValidation.js')}}"></script>
     <script src="{{asset('app-assets/js/scripts/forms/validation/form-validation.js')}}"></script>
+    <script src="{{asset('app-assets/js/scripts/forms/select/form-select2.js')}}"></script>
   
 
 <script src="{{asset('app-assets/js/waitMe.js')}}"></script>

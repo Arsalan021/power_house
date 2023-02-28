@@ -14,7 +14,7 @@
                                 
                 <div class="card-content">
                     <div class="card-body">
-                  {!! Form::model($service, ['method' => 'PATCH','route' => ['service.update', $service->id],'enctype'=>'multipart/form-data']) !!}
+                  {!! Form::model($testimonial, ['method' => 'PATCH','route' => ['testimonial.update', $testimonial->id],'enctype'=>'multipart/form-data']) !!}
                   <div class="row">
                       <div class="col-xs-12 col-sm-12 col-md-12">
                           <div class="form-group">
@@ -30,23 +30,7 @@
                           </div>
                       </div>
 
-                     
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                            <img class="profile-user-img img-fluid" src='{{asset("documents/service/$service->image??null")}}' width="200px" alt="Image">
-                            </div>
-                        </div>
-                        
-
-                      <div class="col-xs-12 col-sm-12 col-md-12">
-                          <div class="form-group">
-                              <strong>Image:</strong>
-                              {!! Form::file('image',  array('class' => 'form-control')) !!}
-                          </div>
-                      </div>
-
-                    
-                      <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                           <button type="submit" class="btn btn-primary">Submit</button>
                       </div>
                   </div>

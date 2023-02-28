@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Setting;
+use App\Models\Contact;
 use DB;
 use DataTables;
 use Mail;
@@ -111,7 +112,7 @@ class AdminController extends Controller
                 $fourRandomDigit = time().rand(1000,9999);
                 User::where('email',$request->email)->update(['remember_token'=>$fourRandomDigit]);
                 $data = array('otp'=>$fourRandomDigit);
-               $send = Mail::send("admin/mail2", $data, function($message) use($email,$first_name,$last_name) {
+                $send = Mail::send("admin/mail2", $data, function($message) use($email,$first_name,$last_name) {
                     $message->to($email, $first_name." ".$last_name)->subject('You have requested to reset your password');
                     $message->from('robertsonalexander40@gmail.com','Test');
                 });
@@ -177,6 +178,7 @@ class AdminController extends Controller
    public function addSetting(Request $request)
    {
         $input = $request->except(['header_logo','footer_logo','_token'],$request->all());
+        
         if($request->hasFile('header_logo'))
         {
             $img = Str::random(20).$request->file('header_logo')->getClientOriginalName();
@@ -199,6 +201,24 @@ class AdminController extends Controller
         {
             return redirect()->back()->with(array('message'=>'Success','type'=>'success'));
             
+        }else{
+            return redirect()->with(array('message'=>'Somethig wrong please try again','type'=>'error'));
+        }
+   }
+
+
+   public function viewContact(Request $request)
+   {
+     $contacts = Contact::get();
+    return view('admin.view-contact',compact('contacts'));
+   }
+
+   public function contactCelete($id)
+   {
+        $contacts =  Contact::find($id)->delete();
+        if($contacts)
+        {
+            return redirect()->back()->with(array('message'=>'deleted successfully','type'=>'success'));
         }else{
             return redirect()->with(array('message'=>'Somethig wrong please try again','type'=>'error'));
         }

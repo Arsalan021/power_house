@@ -26,72 +26,23 @@
             <h2>Recently <br> Completed Work</h2>
         </div>
         <div class="row">
-            <div data-aos="fade-up" data-aos-delay="300" class="col-md-4">
-                <div class="project-card">
-                    <img src="assets/img/work1.png" alt="" class="img-fluid">
-                    <div class="project-card-content">
-                        <h3>Lincoln County, TN 150MW</h3>
-                        <h5><b>Capacity:</b> 120 MWS</h5>
-                        <h5><b>Location:</b> Pinetown, CA</h5>
-                        <a href="#" class="rm-link">Read More</a>
+            @if(count($projects)>0)
+                @foreach($projects as $item)
+                <div data-aos="fade-up" data-aos-delay="300" class="col-md-4">
+                    <div class="project-card">
+                        <img src='{{asset("documents/project/$item->image??null")}}' alt="" class="img-fluid">
+                        <div class="project-card-content">
+                            <h3>{{$item->title??null}}</h3>
+                            <h5><b>Capacity:</b> {{$item->capacity??null}}</h5>
+                            <h5><b>Location:</b> {{$item->location??null}}</h5>
+                            <a href="#" class="rm-link">Read More</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="500" class="col-md-4">
-                <div class="project-card">
-                    <img src="assets/img/work1.png" alt="" class="img-fluid">
-                    <div class="project-card-content">
-                        <h3>Lincoln County, TN 150MW</h3>
-                        <h5><b>Capacity:</b> 120 MWS</h5>
-                        <h5><b>Location:</b> Pinetown, CA</h5>
-                        <a href="#" class="rm-link">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="700" class="col-md-4">
-                <div class="project-card">
-                    <img src="assets/img/work1.png" alt="" class="img-fluid">
-                    <div class="project-card-content">
-                        <h3>Lincoln County, TN 150MW</h3>
-                        <h5><b>Capacity:</b> 120 MWS</h5>
-                        <h5><b>Location:</b> Pinetown, CA</h5>
-                        <a href="#" class="rm-link">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="300" class="col-md-4">
-                <div class="project-card">
-                    <img src="assets/img/work1.png" alt="" class="img-fluid">
-                    <div class="project-card-content">
-                        <h3>Lincoln County, TN 150MW</h3>
-                        <h5><b>Capacity:</b> 120 MWS</h5>
-                        <h5><b>Location:</b> Pinetown, CA</h5>
-                        <a href="#" class="rm-link">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="500" class="col-md-4">
-                <div class="project-card">
-                    <img src="assets/img/work1.png" alt="" class="img-fluid">
-                    <div class="project-card-content">
-                        <h3>Lincoln County, TN 150MW</h3>
-                        <h5><b>Capacity:</b> 120 MWS</h5>
-                        <h5><b>Location:</b> Pinetown, CA</h5>
-                        <a href="#" class="rm-link">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="700" class="col-md-4">
-                <div class="project-card">
-                    <img src="assets/img/work1.png" alt="" class="img-fluid">
-                    <div class="project-card-content">
-                        <h3>Lincoln County, TN 150MW</h3>
-                        <h5><b>Capacity:</b> 120 MWS</h5>
-                        <h5><b>Location:</b> Pinetown, CA</h5>
-                        <a href="#" class="rm-link">Read More</a>
-                    </div>
-                </div>
-            </div>
+                @endforeach
+            @endif
+
+            
         </div>
     </div>
 </section>

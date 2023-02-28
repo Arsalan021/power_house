@@ -25,6 +25,9 @@ return new class extends Migration
             $table->string('youtube')->nullable();
             $table->string('instagram')->nullable();
             $table->string('text')->nullable();
+            
+            $table->string('company_about_us')->nullable();
+            $table->text('company_desc')->nullable();
             $table->timestamps();
         });
     }

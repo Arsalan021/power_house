@@ -19,7 +19,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-            <table class="table table-striped dataex-html5-selectors" >
+            <table class="table table-striped dataex-html5-selectors" id="">
               <thead>
                 <tr>
                     <th>No</th>
@@ -28,7 +28,7 @@
                     <th>Location</th>
                     <th>Description</th>
                     <th>Image</th>
-                    <th>Status</th>
+                    <th>Type</th>
                     <th>Action</th>
                   </tr>
               </thead>
@@ -43,11 +43,12 @@
                     <td>{{ $item->description }}</td>
                     <td><img class="profile-user-img img-fluid" src='{{asset("documents/project/$item->image")}}' width="50px" alt="Image"></td>
                     <td>
+                      
                       <div class="form-group">
-                        <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                            <input type="checkbox" class="custom-control-input switch-input" id="{{$item->id}}" {{($item->status==1)?"checked":""}}>
-                            <label class="custom-control-label" for="{{$item->id}}"></label>
-                        </div>
+                          <select class="select2-size-lg form-control" id="large-select" data-id="{{$item->id}}" data-type="{{$item->type}}">
+                              <option value="compeleted" {{ ($item->type == 'compeleted') ? 'selected' : '' }} >Compeleted</option>
+                              <option value="pending"  {{  ($item->type == 'pending') ? 'selected' : '' }} >Manufacturing</option>
+                           </select>
                       </div>
                     </td> 
                     
@@ -82,33 +83,20 @@
 @section('footer-script')
 
 
-<script>
-
-
-
-  $(function () {
-    $(".example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": []
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    
-  });
-</script>
 
 <script type="text/javascript">
  
  var APP_URL = {!! json_encode(url('/')) !!}
- $(".switch-input").change(function(){
-    
-    if(this.checked)
-        var status=1;
-    else
-        var status=0;
+
+//  
+$('.select2-size-lg').change(function() {
+    var id = $(this).attr("data-id");
+    var type = $(this).attr("data-type");
     $.ajax({
-        url : "{{route('change-status-service')}}", 
+        url : "{{route('change-type-project')}}", 
         type: 'GET',
-        /*dataType: 'json',*/
-        data: {'id': this.id,'status':status},
+       
+        data: {'id': id,'type':type},
         success: function (response) {
           if(response)
             {
@@ -120,8 +108,8 @@
             toastr.error("Some error occured!");
         }
     });
-});
 
+    })
 
  
 </script>

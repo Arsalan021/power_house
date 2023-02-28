@@ -5,26 +5,17 @@
             <h2>manufacturing</h2>
         </div>
         <div data-aos="fade-down" data-aos-delay="500" class="manu-slider">
-            <div class="inner-slide">
-                <figure>
-                    <img src="assets/img/manu1.png" alt="" class="img-fluid">
-                </figure>
-            </div>
-            <div class="inner-slide">
-                <figure>
-                    <img src="assets/img/manu2.png" alt="" class="img-fluid">
-                </figure>
-            </div>
-            <div class="inner-slide">
-                <figure>
-                    <img src="assets/img/manu3.png" alt="" class="img-fluid">
-                </figure>
-            </div>
-            <div class="inner-slide">
-                <figure>
-                    <img src="assets/img/manu2.png" alt="" class="img-fluid">
-                </figure>
-            </div>
+            @if(count($manufacturing)>0)
+                @foreach($manufacturing as $item)
+                <div class="inner-slide">
+                    <figure>
+                        <img src='{{asset("documents/project/$item->image")}}' alt="" class="img-fluid">
+                    </figure>
+                </div>
+                @endforeach
+            @endif
+
+            
         </div>
     </div>
 </section>
