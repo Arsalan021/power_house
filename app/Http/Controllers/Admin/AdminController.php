@@ -38,8 +38,19 @@ class AdminController extends Controller
         return view('forgot-password');
     }
     public function resetpassword($id)
-    {
+    {   
+        date_default_timezone_set("Asia/Karachi");
+        $current_time =  Carbon::now()->format('Y-m-d H:i:m');
+        $user = User::where('remember_token',$id)->first();
+        if(isset($user))
+        {
+            if($current_time >= $user->expire_token_time)
+            {
+                return redirect('forgot-password')->with(['message'=>"Link has been expired",'type'=>'error']);
+            }
+        }
         
+
         return view('resetpasswords-password',compact('id'));
     }
 
@@ -99,9 +110,17 @@ class AdminController extends Controller
 
     }
 
+    public function notFound()
+    {
+        return  404;
+    }
+
       
     public function forgotPassword(Request $request)
     {
+        date_default_timezone_set("Asia/Karachi");
+        $expire_token_time =  Carbon::now()->addMinutes(30)->format('Y-m-d H:i:m');
+
         if($request->has("email")){
             $user = User::where('email',$request->email)->get()->first();
             if($user)
@@ -109,8 +128,8 @@ class AdminController extends Controller
                 $first_name = $user->first_name??'';
                 $last_name = $user->last_name??'';
                 $email = $user->email;
-                $fourRandomDigit = time().rand(1000,9999);
-                User::where('email',$request->email)->update(['remember_token'=>$fourRandomDigit]);
+                $fourRandomDigit = Str::random(40).time().rand(1000,9999);
+                User::where('email',$request->email)->update(['remember_token'=>$fourRandomDigit,'expire_token_time'=>$expire_token_time]);
                 $data = array('otp'=>$fourRandomDigit);
                 $send = Mail::send("admin/mail2", $data, function($message) use($email,$first_name,$last_name) {
                     $message->to($email, $first_name." ".$last_name)->subject('You have requested to reset your password');
@@ -128,11 +147,13 @@ class AdminController extends Controller
 
     public function updatePassword(Request $request)
     {
+       
         if($request->has("remember_token"))
         {
             if($request->has("password"))
             {
                 $user = User::where('remember_token',$request->remember_token)->get()->first();
+                
                 if($user)
                 {
                     User::where('remember_token',$request->remember_token)->update(['remember_token'=>time().rand(1000,9999),'password'=>Hash::make($request->password)]);
@@ -154,6 +175,7 @@ class AdminController extends Controller
 
    public function dashboard(Request $request)
     {
+       
        return view('admin/dashboard');
     }
 

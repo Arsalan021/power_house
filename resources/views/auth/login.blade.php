@@ -30,6 +30,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/colors/palette-gradient.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/authentication.css')}}">
+    <link rel="stylesheet" href="{{asset('app-assets/css/toastr.min.css')}}" />
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -98,7 +99,7 @@
                                                                 </div> -->
                                                             </fieldset>
                                                         </div>
-                                                        <div class="text-right"><a href="auth-forgot-password.html" class="card-link">Forgot Password?</a></div>
+                                                        <div class="text-right"><a href="{{route('forgot-password')}}" class="card-link">Forgot Password?</a></div>
                                                     </div>
                                                     <a href="{{route('user-register')}}" class="btn btn-outline-primary float-left btn-inline">Register</a>
                                                     <button type="submit" class="btn btn-primary float-right btn-inline">Login</button>
@@ -106,15 +107,7 @@
                                             </div>
                                         </div>
                                         <div class="login-footer">
-                                            <div class="divider">
-                                                <div class="divider-text">OR</div>
-                                            </div>
-                                            <div class="footer-btn d-inline">
-                                                <a href="#" class="btn btn-facebook"><span class="fa fa-facebook"></span></a>
-                                                <a href="#" class="btn btn-twitter white"><span class="fa fa-twitter"></span></a>
-                                                <a href="#" class="btn btn-google"><span class="fa fa-google"></span></a>
-                                                <a href="#" class="btn btn-github"><span class="fa fa-github-alt"></span></a>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -140,10 +133,28 @@
     <script src="{{asset('app-assets/js/core/app-menu.js')}}"></script>
     <script src="{{asset('app-assets/js/core/app.js')}}"></script>
     <script src="{{asset('app-assets/js/scripts/components.js')}}"></script>
-    <!-- END: Theme JS-->
+    <script src="{{asset('app-assets/js/toastr.min.js')}}"></script>
+    <script type="text/javascript">
+    var type = "{{ Session::get('type') }}";
+      switch (type) {
+          case 'info':
+              toastr.info("{{ Session::get('message') }}");
+              break;
 
-    <!-- BEGIN: Page JS-->
-    <!-- END: Page JS-->
+          case 'warning':
+              toastr.warning("{{ Session::get('message') }}");
+              break;
+
+          case 'success':
+              toastr.success("{{ Session::get('message') }}");
+              break;
+
+          case 'error':
+              toastr.error("{{ Session::get('message') }}");
+              break;
+
+      }
+</script> 
 
 </body>
 <!-- END: Body-->

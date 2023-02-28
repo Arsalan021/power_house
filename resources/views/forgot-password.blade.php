@@ -1,93 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Forgot Password</title>
-  <link rel="icon" href="{{asset('assets/images/favicon.png')}}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="PIXINVENT">
+    <title>Forgot Password - Vuexy - Bootstrap HTML admin template</title>
+    <link rel="apple-touch-icon" href="{{asset('app-assets/images/ico/apple-icon-120.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('app-assets/images/ico/favicon.ico')}}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
-   <link rel="stylesheet" href="{{asset('assets/css/toastr.min.css')}}" />
-  <style type="text/css">
-   /* .btn-primary{
-      background: linear-gradient(159deg, rgba(0,132,235,1) 42%, rgba(190,0,254,1) 66%);
-      border: 1px solid #6f42c1;
-    }
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/vendors.min.css')}}">
+    <!-- END: Vendor CSS-->
 
-    .btn-primary:hover{
-      background: linear-gradient(159deg, rgba(0,132,235,1) 42%, rgba(190,0,254,1) 66%);
-      border: 1px solid #6f42c1;
-    } */
-  body{
-    background-color:#000000 !important;
-  }
-  </style>
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/bootstrap-extended.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/colors.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/components.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/dark-layout.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/semi-dark-layout.css')}}">
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/horizontal-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/colors/palette-gradient.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/authentication.css')}}">
+    <link rel="stylesheet" href="{{asset('app-assets/css/toastr.min.css')}}" />
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+    <!-- END: Custom CSS-->
+
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-    <!-- <img src="{{asset('front-assets/images/logo.png')}}" alt=""> -->
-    <br>
-    <br>
-    <!-- <a href="javascript:void(0)"><b>Honey Staff LLC</b></a> -->
-  </div>
-  <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">Reset you're password</p>
+<!-- END: Head-->
 
-      <form action="{{route('forgotPassword')}}" method="post">
-        @csrf
-        <div class="input-group mb-3">
-          <input type="email"  name="email" class="form-control" placeholder="Email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+<!-- BEGIN: Body-->
+
+<body class="horizontal-layout horizontal-menu dark-layout 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page" data-open="hover" data-menu="horizontal-menu" data-col="1-column" data-layout="dark-layout">
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
             </div>
-          </div>
-        </div>
-        <div class="row">
-          
-          <!-- /.col -->
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block" >Submit</button>
-          </div>
-          <!-- /.col -->
-        </div>
-      </form>
+            <div class="content-body">
+                <section class="row flexbox-container">
+                    <div class="col-xl-7 col-md-9 col-10 d-flex justify-content-center px-0">
+                        <div class="card bg-authentication rounded-0 mb-0">
+                            <div class="row m-0">
+                                <div class="col-lg-6 d-lg-block d-none text-center align-self-center">
+                                    <img src="{{asset('app-assets/images/pages/forgot-password.png')}}" alt="branding logo">
+                                </div>
+                                <div class="col-lg-6 col-12 p-0">
+                                    <div class="card rounded-0 mb-0 px-2 py-1">
+                                        <div class="card-header pb-1">
+                                            <div class="card-title">
+                                                <h4 class="mb-0">Recover your password</h4>
+                                            </div>
+                                        </div>
+                                        <p class="px-2 mb-0">Please enter your email address and we'll send you instructions on how to reset your password.</p>
+                                        <div class="card-content">
+                                          <form action="{{route('forgotPassword')}}" method="POST">
+                                            @csrf
+                                            <div class="card-body">
+                                                    <div class="form-label-group">
+                                                        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email">
+                                                        <label for="inputEmail">Email</label>
+                                                    </div>
+                                                
+                                                <div class="float-md-left d-block mb-1">
+                                                    <a href="{{route('login')}}" class="btn btn-outline-primary btn-block px-75">Back to Login</a>
+                                                </div>
+                                                <div class="float-md-right d-block mb-1">
+                                                   
+                                                    <button type="submit" class="btn btn-primary btn-block px-75">Recover Password</button>
+                                                </div>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </section>
 
-      
-      <!-- /.social-auth-links -->
-
-      <!-- <p class="mb-1">
-        <a href="/password/reset">I forgot my password</a>
-      </p> -->
-      <p class="mb-0">
-        <a href="{{route('user-login')}}" class="text-center">Login here</a>
-      </p>
+        </div>
     </div>
-    <!-- /.login-card-body -->
-  </div>
-</div>
-<!-- /.login-box -->
+    </div>
+    <!-- END: Content-->
 
-<!-- jQuery -->
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
-<script src="{{asset('assets/js/toastr.min.js')}}"></script>
 
-<script type="text/javascript">
-  var type = "{{ Session::get('type') }}";
+    <!-- BEGIN: Vendor JS-->
+    <script src="{{asset('app-assets/vendors/js/vendors.min.js')}}"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{{asset('app-assets/vendors/js/ui/jquery.sticky.js')}}"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="{{asset('app-assets/js/core/app-menu.js')}}"></script>
+    <script src="{{asset('app-assets/js/core/app.js')}}"></script>
+    <script src="{{asset('app-assets/js/scripts/components.js')}}"></script>
+    <script src="{{asset('app-assets/js/toastr.min.js')}}"></script>
+    <script type="text/javascript">
+    var type = "{{ Session::get('type') }}";
       switch (type) {
           case 'info':
               toastr.info("{{ Session::get('message') }}");
@@ -107,5 +133,8 @@
 
       }
 </script> 
+
 </body>
+<!-- END: Body-->
+
 </html>

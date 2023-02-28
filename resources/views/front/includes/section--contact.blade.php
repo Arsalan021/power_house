@@ -24,7 +24,7 @@
                             <input type="text" class="form-control" name="social_installer" placeholder="Solar Installer*" required>
                         </div>
                     </div>
-                    <textarea rows="3" class="form-control tt" name="message" placeholder="Message*"></textarea>
+                    <textarea rows="3" class="form-control tt" name="msg" placeholder="Message*"></textarea>
                     <input type="submit" class="theme-btn" value="Submit Now">
                 </form>
             </div>

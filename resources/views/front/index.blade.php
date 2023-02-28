@@ -29,9 +29,9 @@
             <div data-aos="fade-left" data-aos-delay="500" class="about-inner">
                 <div class="section-intro">
                     <h4>Company</h4>
-                    <h2>{{$setting->about_us??null}}</h2>
+                    <h2>{{$setting->company_about_us??null}}</h2>
                     <p>
-                       {{$setting->about_us_desc??null}}
+                       {{$setting->company_desc??null}}
                     </p>
                     <a href="about-us.php" class="theme-btn">Read More</a>
                 </div>

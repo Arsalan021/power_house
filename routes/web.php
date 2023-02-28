@@ -60,7 +60,8 @@ Route::controller(AdminController::class)->group(function () {
    Route::get('forgot-password', 'forgotPasswords')->name('forgot-password');
    Route::post('forgotPassword', 'forgotPassword')->name('forgotPassword');
    Route::post('updatePassword', 'updatePassword')->name('updatePassword');
-   route::get('resetpassword/{id}','resetpassword')->name('resetpassword');
+   route::any('resetpassword/{id}','resetpassword')->name('resetpassword');
+   Route::any('(:any)', 'notFound');
    
 });
 

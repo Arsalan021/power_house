@@ -72,12 +72,13 @@
 <script src="{{asset('assets/js/waitMe.js')}}"></script>
 
 
+
 <script type="text/javascript">
 
  var APP_URL = {!! json_encode(url('/')) !!}
 
 
-
+//  toastr.success('Have fun storming the castle!', 'Miracle Max Says');
 
 
  

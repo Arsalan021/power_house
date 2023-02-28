@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/components.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/dark-layout.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/semi-dark-layout.css')}}">
+    
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
@@ -242,7 +243,12 @@
   
 
 <script src="{{asset('app-assets/js/waitMe.js')}}"></script>
-<script src="{{asset('app-assets/js/toastr.min.js')}}"></script>
+<!-- <script src="{{asset('app-assets/js/toastr.min.js')}}"></script>
+<script src="{{asset('app-assets/js/scripts/extensions/toastr.js')}}"></script> -->
+
+<link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/extensions/toastr.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/toastr.css')}}">
+<script src="{{asset('app-assets/vendors/js/extensions/toastr.min.js')}}"></script>
 <script src="{{asset('app-assets/js/scripts/extensions/toastr.js')}}"></script>
 
     <script>
