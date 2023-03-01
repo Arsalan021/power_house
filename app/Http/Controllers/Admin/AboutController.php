@@ -21,6 +21,23 @@ class AboutController extends Controller
     public function addAbout(Request $request)
     {
         $input = $request->except(['services_image','_token'],$request->all());
+
+        
+
+        if($request->hasFile('header_background_image'))
+        {
+            $img = Str::random(21).$request->file('header_background_image')->getClientOriginalName();
+            $input['header_background_image'] = $img;
+            $request->header_background_image->move(public_path("documents/about/"), $img);
+        }
+
+        if($request->hasFile('background_image'))
+        {
+            $img = Str::random(21).$request->file('background_image')->getClientOriginalName();
+            $input['background_image'] = $img;
+            $request->background_image->move(public_path("documents/about/"), $img);
+        }
+
         if($request->hasFile('services_image'))
         {
             $img = Str::random(20).$request->file('services_image')->getClientOriginalName();
@@ -42,6 +59,9 @@ class AboutController extends Controller
             $input['custom_fit_img2'] = $img;
             $request->custom_fit_img2->move(public_path("documents/about/"), $img);
         }
+
+        
+        
 
         
         $about = About::updateOrCreate([

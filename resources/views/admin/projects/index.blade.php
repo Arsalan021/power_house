@@ -45,11 +45,24 @@
                     <td>
                       
                       <div class="form-group">
-                          <select class="select2-size-lg form-control" id="large-select" data-id="{{$item->id}}" data-type="{{$item->type}}">
+                          <select class="select2-size-lg form-control" id="large-select{{$item->id}}" data-id="{{$item->id}}" data-type="{{$item->type}}">
                               <option value="compeleted" {{ ($item->type == 'compeleted') ? 'selected' : '' }} >Compeleted</option>
                               <option value="pending"  {{  ($item->type == 'pending') ? 'selected' : '' }} >Manufacturing</option>
                            </select>
                       </div>
+
+                      <!-- <div class="custom-control custom-switch switch-lg custom-switch-success mr-2 mb-1">
+                              
+                              <input type="checkbox" class="custom-control-input" id="customSwitch{{$key+1}}" data-id="{{$item->id}}" data-type="{{$item->type}}">
+                              <label class="custom-control-label" for="customSwitch{{$key+1}}">
+                                  @if($item->type =='compeleted')
+                                  <span class="switch-text-left">Compeleted</span>
+                                  @endif
+                                  @if($item->type =='pending')
+                                  <span class="switch-text-right">Manufacture</span>
+                                  @endif
+                              </label>
+                          </div> -->
                     </td> 
                     
                     <td>
@@ -91,7 +104,9 @@
 //  
 $('.select2-size-lg').change(function() {
     var id = $(this).attr("data-id");
-    var type = $(this).attr("data-type");
+    // var type = $(this).attr("data-type");
+    var type = $("#large-select"+id).val();
+    
     $.ajax({
         url : "{{route('change-type-project')}}", 
         type: 'GET',

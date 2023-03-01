@@ -29,7 +29,7 @@
                     </div>
                     <ul>
                         <li>
-                            <a href="tel:1234567890">
+                            <a href="tel:{{$setting->phone_number??null}}">
                                 <i class="far fa-phone fa-fw"></i>
                                 <div>
                                     <h5><b>Phone</b></h5>
@@ -38,7 +38,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="mailto:info@pwrhp.com">
+                            <a href="mailto:{{$setting->email??null}}">
                                 <i class="far fa-at fa-fw"></i>
                                 <div>
                                     <h5><b>Email</b></h5>
@@ -51,7 +51,7 @@
                                 <i class="fal fa-map-marker-alt fa-fw"></i>
                                 <div>
                                     <h5><b>Location</b></h5>
-                                    {{$setting->email??null}}
+                                    {{$setting->address??null}}
                                 </div>
                             </a>
                         </li>

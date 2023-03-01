@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->string('icon_title')->nullable();
+            $table->string('header_background_image')->nullable();
+            $table->string('home_title')->nullable();
+            $table->string('home_sub_title')->nullable();
+            $table->text('home_description')->nullable();
             $table->string('header_logo')->nullable();
             $table->string('footer_logo')->nullable();
             $table->string('email')->nullable();

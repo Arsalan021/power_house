@@ -30,6 +30,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/colors/palette-gradient.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/authentication.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/validation/form-validation.css')}}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -68,29 +69,40 @@
                                         <p class="px-2">Fill the below form to create a new account.</p>
                                         <div class="card-content">
                                             <div class="card-body pt-0">
-                                                <form action="{{route('user-register-process')}}" method="POST" enctype= "multipart/form-data">
+                                                <form action="{{route('user-register-process')}}" method="POST" enctype= "multipart/form-data" novalidate>
                                                   @csrf
-                                                    <div class="form-label-group">
-                                                        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="Name" required>
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="Name" required data-validation-required-message="This field is required">
                                                         <label for="inputName">First Name</label>
                                                     </div>
-
-                                                    <div class="form-label-group">
-                                                        <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Name" required>
-                                                        <label for="inputName">Last Name</label>
                                                     </div>
 
-                                                    <div class="form-label-group">
-                                                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Name" required data-validation-required-message="This field is required">
+                                                            <label for="inputName">Last Name</label>
+                                                         </div>   
+                                                        </div>
+
+                                                    <div class="form-group">
+                                                      <div class="controls">
+                                                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" required data-validation-required-message="The email field is required" >
                                                         <label for="inputEmail">Email</label>
                                                     </div>
-                                                    <div class="form-label-group">
-                                                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <div class="controls">
+                                                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required data-validation-required-message="The password field is required" minlength="5" >
                                                         <label for="inputPassword">Password</label>
                                                     </div>
-                                                    <div class="form-label-group">
-                                                        <input type="password" id="inputConfPassword" class="form-control" placeholder="Confirm Password" required>
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <div class="controls">
+                                                        <input type="password" id="inputConfPassword" class="form-control" placeholder="Confirm Password" equired data-validation-match-match="password" data-validation-required-message="The Confirm password field is required" minlength="6">
                                                         <label for="inputConfPassword">Confirm Password</label>
+                                                    </div>
                                                     </div>
                                                    
                                                     <a href="{{route('user-login')}}" class="btn btn-outline-primary float-left btn-inline mb-50">Login</a>
@@ -113,28 +125,25 @@
 
     <!-- BEGIN: Vendor JS-->
     <script src="{{asset('app-assets/vendors/js/vendors.min.js')}}"></script>
+    <script src="{{asset('app-assets/vendors/js/forms/validation/jqBootstrapValidation.js')}}"></script>
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
+    
     <script src="{{asset('app-assets/js/core/app-menu.js')}}"></script>
     <script src="{{asset('app-assets/js/core/app.js')}}"></script>
     <script src="{{asset('app-assets/js/scripts/components.js')}}"></script>
     <script src="{{asset('app-assets/js/toastr.min.js')}}"></script>
+    <script src="{{asset('app-assets/js/scripts/forms/validation/form-validation.js')}}"></script>
 
 
     <script type="text/javascript">
   var type = "{{ Session::get('type') }}";
       switch (type) {
-          case 'info':
-              toastr.info("{{ Session::get('message') }}");
-              break;
-
-          case 'warning':
-              toastr.warning("{{ Session::get('message') }}");
-              break;
+          
 
           case 'success':
               toastr.success("{{ Session::get('message') }}");

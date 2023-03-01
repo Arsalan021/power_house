@@ -9,7 +9,7 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Dashboard analytics - Vuexy - Bootstrap HTML admin template</title>
+    <title>@yield('Titles') Dashboard </title>
     <link rel="apple-touch-icon" href="{{asset('app-assets/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('app-assets/images/ico/favicon.ico')}}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
@@ -47,7 +47,10 @@
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+
     <!-- END: Custom CSS-->
+
+    
     @yield('header-script')
 
 </head>
@@ -69,11 +72,11 @@
                     </div>
                     <ul class="nav navbar-nav float-right">
                         
-                       
+                        @php $profile = auth()->user()->profile??null; @endphp
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">{{auth()->user()->first_name}} {{auth()->user()->last_name}}</span><span class="user-status">Available</span></div><span><img class="round" src="../../../app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"></span>
+                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">{{auth()->user()->first_name}} {{auth()->user()->last_name}}</span><span class="user-status">Available</span></div><span><img class="round" src='{{asset("documents/profile/$profile")}}' alt="avatar" height="40" width="40"></span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="page-user-profile.html"><i class="feather icon-user"></i> Edit Profile</a>
+                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{route('profile')}}"><i class="feather icon-user"></i> Edit Profile</a>
                                <div class="dropdown-divider"></div><a class="dropdown-item" href="{{route('logout')}}"><i class="feather icon-power"></i> Logout</a>
                             </div>
                         </li>
@@ -129,6 +132,9 @@
                         </li>
 
                         <li class="@if(Route::currentRouteName() == 'view-about' ) active  @endif" ><a href="{{route('view-about')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">View About</span></a>
+                        </li>
+
+                        <li class="@if(Route::currentRouteName() == 'view-section' ) active  @endif" ><a href="{{route('view-section')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">View Section</span></a>
                         </li>
 
                     </ul>

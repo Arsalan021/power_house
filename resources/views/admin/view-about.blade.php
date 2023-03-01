@@ -1,12 +1,11 @@
 @extends('admin/layout/layout')
 
 @section('header-script')
-<style type="text/css">
-  
-</style>
+
 @endsection
 
 @section('body-section')
+
 <section class="input-validation dashboard-analytics">
    <div class="row">
       <div class="col-md-12">
@@ -19,6 +18,22 @@
                         <input type="hidden" name="id" value="{{$about->id??null}}">
                         <div class="col-md-12">
 
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Header Background Image</label>
+                                    <div class="controls">
+                                        <input type="file" name="header_background_image" class="form-control" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                @php $header_background_image = $about->header_background_image??null; @endphp
+                                <img src='{{asset("documents/about/$header_background_image")}}' alt="" width="150px">
+                            </div>
+                        </div>
+
+
                         <div class="form-group">
                               <label>About Us</label>
                               <div class="controls">
@@ -28,7 +43,7 @@
 
 
 
-                        <div class="form-group">
+                           <div class="form-group">
                               <label>About Us Description</label>
                               <div class="controls">
                                 <fieldset class="form-group">
@@ -36,6 +51,22 @@
                                 </fieldset>
                                  </div>
                            </div>
+
+                           <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>background Image</label>
+                                        <div class="controls">
+                                            <input type="file" name="background_image" class="form-control" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    @php $background_image = $about->background_image??null; @endphp
+                                    <img src='{{asset("documents/about/$background_image")}}' alt="" width="150px">
+                                </div>
+                            </div>
+
 
                            
 

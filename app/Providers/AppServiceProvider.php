@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Setting;
 use App\Models\About;
+use App\Models\Section;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,7 +29,8 @@ class AppServiceProvider extends ServiceProvider
     {
         $setting = Setting::first();
         $about = About::first();
+        $section = Section::first();
       
-        view()->share(compact('setting','about'));
+        view()->share(compact('setting','about','section'));
     }
 }

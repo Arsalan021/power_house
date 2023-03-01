@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\AboutController;
 
 
 
+
+
 use App\Http\Controllers\FrontController;
 
 
@@ -73,6 +75,8 @@ Route::middleware(['auth','can:isAdmin'])->prefix('admin')->group(function()
     Route::resource('service', ServiceController::class);
     Route::resource('project', ProjectController::class);
     Route::resource('testimonial', TestimonialController::class);
+    
+    
 
     Route::get('change-status-service',[ServiceController::class,'changeStatusService'])->name('change-status-service');
     Route::get('change-type-project',[ProjectController::class,'changTypeProject'])->name('change-type-project');
@@ -86,6 +90,9 @@ Route::middleware(['auth','can:isAdmin'])->prefix('admin')->group(function()
         Route::post('addSetting', 'addSetting')->name('addSetting');
         route::get('view-contact','viewContact')->name('view-contact');
         route::get('contact-delete/{id}','contactCelete')->name('contact-delete');
+        route::get('view-section','viewSection')->name('view-section');
+        route::post('add-section','addSection')->name('add-section');
+        route::post('profile-update','profileUpdate')->name('profile-update');
         
     });
 

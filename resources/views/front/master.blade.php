@@ -2,10 +2,16 @@
 <html lang="en">
 
 <head>
+    @php 
+    
+    $header_background_image = $setting->header_background_image??null;
+    $icon_title = $setting->icon_title??null;
+    @endphp
+
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="icon" type="image/x-icon" href='{{ asset("documents/setting/$icon_title") }}'>
     <!-- BOOTRSTRAP CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 
@@ -23,6 +29,14 @@
     <link rel="stylesheet" href="{{asset('front-assets/css/style.css')}}" />
     <link rel="stylesheet" href="{{asset('front-assets/css/responsive.css')}}" />
     <link rel="stylesheet" href="{{asset('app-assets/css/toastr.min.css')}}" />
+    
+    <style type="text/css">
+    
+    .section--inner-main{
+        background-image: url('{{ asset("documents/setting/$header_background_image") }}') !important
+    }
+
+    </style>
 
 <title> @yield('title') | Power House</title>
 </head>
@@ -50,19 +64,19 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item ">
+                        <li class="nav-item  @if(Route::currentRouteName() == 'index' ) active  @endif ">
                             <a class="nav-link" href="{{route('index')}}">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item @if(Route::currentRouteName() == 'about-us' ) active  @endif ">
                             <a class="nav-link" href="{{route('about-us')}}">About Us</a>
                         </li>
-                        <li class="nav-item ">
+                        <li class="nav-item @if(Route::currentRouteName() == 'services' ) active  @endif ">
                             <a class="nav-link" href="{{route('services')}}">Services</a>
                         </li>
-                        <li class="nav-item ">
+                        <li class="nav-item @if(Route::currentRouteName() == 'projects' ) active  @endif">
                             <a class="nav-link" href="{{route('projects')}}">Project</a>
                         </li>
-                        <li>
+                        <li class=" @if(Route::currentRouteName() == 'contact-us' ) active  @endif">
                             <a href="{{route('contact-us')}}" class="theme-btn">Contact us</a>
                         </li>
                     </ul>

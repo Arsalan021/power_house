@@ -37,7 +37,7 @@
                     <td>{{ $item->phone??null }}</td>
                     <td>{{ $item->email??null }}</td>
                     <td>{{ $item->social_installer??null }}</td>
-                    <td>{{ $item->message??null }}</td>
+                    <td>{{ $item->msg??null }}</td>
                     <td>
                       <a href="{{route('contact-delete',$item->id)}}" onclick="return confirm('Are you sure want to delete?')"><span class="action-delete btn btn-danger"><i class="feather icon-trash"></i></span></a>
                      

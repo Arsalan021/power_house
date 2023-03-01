@@ -1,6 +1,8 @@
 
 @extends('admin/layout/layout')
 
+@section('Titles')Project Create@endsection
+
 @section('header-script')
 
 @endsection

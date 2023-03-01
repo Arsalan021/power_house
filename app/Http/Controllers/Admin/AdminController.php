@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Setting;
 use App\Models\Contact;
+use App\Models\Section;
 use DB;
 use DataTables;
 use Mail;
@@ -199,8 +200,24 @@ class AdminController extends Controller
 
    public function addSetting(Request $request)
    {
-        $input = $request->except(['header_logo','footer_logo','_token'],$request->all());
+        $input = $request->except(['header_logo','footer_logo','header_background_image','icon_title','_token'],$request->all());
         
+        
+
+        if($request->hasFile('icon_title'))
+        {
+            $img = Str::random(21).$request->file('icon_title')->getClientOriginalName();
+            $input['icon_title'] = $img;
+            $request->icon_title->move(public_path("documents/setting/"), $img);
+        }
+
+        if($request->hasFile('header_background_image'))
+        {
+            $img = Str::random(21).$request->file('header_background_image')->getClientOriginalName();
+            $input['header_background_image'] = $img;
+            $request->header_background_image->move(public_path("documents/setting/"), $img);
+        }
+
         if($request->hasFile('header_logo'))
         {
             $img = Str::random(20).$request->file('header_logo')->getClientOriginalName();
@@ -244,6 +261,63 @@ class AdminController extends Controller
         }else{
             return redirect()->with(array('message'=>'Somethig wrong please try again','type'=>'error'));
         }
+   }
+
+
+   public function viewSection(Request $request)
+   {
+     $section = Section::first();
+    return view('admin.sections.index',compact('section'));
+   }
+
+   public function addSection(Request $request)
+   {
+        $input = $request->except(['image','_token'],$request->all());
+        
+        if($request->hasFile('image'))
+        {
+            $img = Str::random(20).$request->file('image')->getClientOriginalName();
+            $input['image'] = $img;
+            $request->image->move(public_path("documents/section/"), $img);
+        }
+
+       
+    
+        $section = Section::updateOrCreate([
+            'id' => $request->id
+        ], $input);
+
+        if($section)
+        {
+            return redirect()->back()->with(array('message'=>'Success','type'=>'success'));
+            
+        }else{
+            return redirect()->with(array('message'=>'Somethig wrong please try again','type'=>'error'));
+        }
+   }
+
+
+   public function profile()
+   {
+     return view('admin.profile');
+   }
+
+   public function profileUpdate(Request $request)
+   {
+        $user = User::find(auth()->user()->id);
+        $input = $request->except(['profile','_token'],$request->all());
+
+        if($request->hasFile('profile'))
+        {
+            $img = Str::random(20).$request->file('profile')->getClientOriginalName();
+            $input['profile'] = $img;
+            $request->profile->move(public_path("documents/profile/"), $img);
+        }
+
+        $user->update($input);
+
+        return redirect()->back()
+                ->with(['message'=>'User update successfully','type'=>'success']);
    }
 
 }

@@ -19,6 +19,67 @@
                         <input type="hidden" name="id" value="{{$setting->id??null}}">
                         <div class="col-md-12">
 
+                        <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                       <label>Icon Image</label>
+                                       <div class="controls">
+                                          <input type="file" name="icon_title" class="form-control" >
+                                       </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 @php $icon_title = $setting->icon_title??null; @endphp
+                                 <img src='{{asset("documents/setting/$icon_title")}}' alt="" width="150px">
+                              </div>
+                           </div>
+
+
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                       <label>Header Background Image</label>
+                                       <div class="controls">
+                                          <input type="file" name="header_background_image" class="form-control" >
+                                       </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 @php $header_background_image = $setting->header_background_image??null; @endphp
+                                 <img src='{{asset("documents/setting/$header_background_image")}}' alt="" width="150px">
+                              </div>
+                           </div>
+
+                             <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>Home Title</label>
+                                       <div class="controls">
+                                          <input type="text" name="home_title" class="form-control" value="{{$setting->home_title??null}}">
+                                       </div>
+                                    </div>
+                                 </div> 
+
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>Home Sub Title</label>
+                                       <div class="controls">
+                                          <input type="text" name="home_sub_title" class="form-control" placeholder="Home Sub Title" value="{{$setting->home_sub_title??null}}">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>   
+
+                              <div class="form-group">
+                                 <label>Home title Description</label>
+                                 <div class="controls">
+                                 <fieldset class="form-group">
+                                       <textarea class="form-control" id="home_description" name="home_description" rows="3" placeholder="Home Description">{{$setting->home_description??null}}</textarea>
+                                 </fieldset>
+                                    </div>
+                              </div>
+
+
                            <div class="form-group">
                               <label>Company About</label>
                               <div class="controls">
@@ -68,7 +129,7 @@
                             </div>
 
                            
-                            <div class="row">
+                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                        <label>Email</label>

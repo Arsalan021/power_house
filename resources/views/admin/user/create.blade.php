@@ -34,7 +34,7 @@
                                                     <div class="form-group">
                                                         <label>Email</label>
                                                         <div class="controls">
-                                                            <input type="text" name="email" class="form-control" required  data-validation-required-message="This field is required" placeholder="Enter Character only">
+                                                            <input type="email" name="email" class="form-control" required  required data-validation-required-message="This field is required" placeholder="Email">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">

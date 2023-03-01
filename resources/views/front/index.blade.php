@@ -11,9 +11,9 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="main-content">
-                    <h1 class="anim-text">POWERHOUSE</h1>
-                    <h2 class="anim-text">Reliable, Responsive & Competitive</h2>
-                    <p class="anim-text">We support your PV Solar Projects and BESS foundation needs.</p>
+                    <h1 class="anim-text">{{$setting->home_title??null}}</h1>
+                    <h2 class="anim-text">{{$setting->home_sub_title??null}}</h2>
+                    <p class="anim-text">{{$setting->home_description??null}}.</p>
                 </div>
             </div>
         </div>
@@ -59,9 +59,10 @@
         <div class="row justify-content-center">
             @if(count($services)>0)
                 @foreach($services as $item)
+                @php $image = $item->image??null; @endphp
                 <div data-aos="fade-up" data-aos-delay="500" class="col-md-4">
                     <div class="service-card">
-                        <img src='{{asset("documents/service/$item->image??null")}}' alt="" class="img-fluid">
+                        <img src='{{asset("documents/service/$image")}}' alt="" class="img-fluid">
                         <h3>{{$item->title??null}}</h3>
                         <p>
                         {{$item->description??null}}.
@@ -98,9 +99,12 @@
         <div data-aos="fade-down" data-aos-delay="700" class="projects-slider">
             @if(count($projects)>0)
             @foreach($projects as $item)
+            
+            @php $img = $item->image??null; @endphp
+            
             <div class="inner-slide">
                 <div class="project-card">
-                    <img src='{{asset("documents/project/$item->image??null")}}' alt="" class="img-fluid">
+                    <img src='{{asset("documents/project/$img")}}' alt="" class="img-fluid">
                     <div class="project-card-content">
                         <h3>{{$item->title??null}}</h3>
                         <h5><b>Capacity:</b> {{$item->capacity??null}}</h5>

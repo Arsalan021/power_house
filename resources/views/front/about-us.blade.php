@@ -1,6 +1,19 @@
 @extends('front/master')
 @section('title','About Us')
 @section('body-section')
+@php 
+$background_image = $about->background_image??null;
+$header_background_image = $about->header_background_image??null;
+@endphp
+<style type="text/css">
+    .section--about{
+        background-image: url('{{ asset("documents/about/$background_image") }}') !important
+    }
+    .section--inner-main{
+        background-image: url('{{ asset("documents/about/$header_background_image") }}') !important
+    }
+
+</style>
 <!-- SECTION: MAIN -->
 <section class="section0 section--inner-main">
     <div class="container">
@@ -46,7 +59,7 @@
                     <p>
                       {{$about->services_desc??null}}
                     </p>
-                    <a href="#sectionContact" class="theme-btn">Contact Us</a>
+                    <a href="{{route('contact-us')}}" class="theme-btn">Contact Us</a>
                 </div>
             </div>
         </div>

@@ -42,16 +42,14 @@
                                     <h2 class="mb-0">
                                         <button class="faq-btn" type="button" data-toggle="collapse"
                                             data-target="#collapseOne{{$key}}" aria-expanded="true" aria-controls="collapseOne{{$key}}">
-                                            Collapsible Group Item #1
+                                            {{$item->title??null}}
                                         </button>
                                     </h2>
                                 </div>
                                 <div id="collapseOne{{$key}}" class="collapse @if($key == 0) show @endif" aria-labelledby="headingOne{{$key}}"
                                     data-parent="#accordionExample">
                                     <div class="card-body">
-                                        Some placeholder content for the first accordion panel.
-                                        This panel is shown by default, thanks to the
-                                        <code>.show</code> class.
+                                    {{$item->description??null}}
                                     </div>
                                 </div>
                             </div>

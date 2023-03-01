@@ -89,12 +89,12 @@ class ProjectController extends Controller
 
     public function changTypeProject(Request $request)
     {
-        if($request->type == 'compeleted')
-        $type = 'pending';
-        if($request->type == 'pending')
-        $type = 'compeleted';
+        // if($request->type == 'compeleted')
+        // $type = 'pending';
+        // if($request->type == 'pending')
+        // $type = 'compeleted';
 
-        $statusChange = Project::where('id',$request->id)->update(['type'=>$type]);
+        $statusChange = Project::where('id',$request->id)->update(['type'=>$request->type]);
         if($statusChange)
         {
             return array('message'=>'Project status  has been changed successfully','type'=>'success');
